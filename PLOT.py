@@ -1,4 +1,37 @@
 # Function to plot Bias-Variance curve
+#!pip install torch, torchdivision, matplotlib, seaborn, numpy, sklearn, pandas
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as optim
+import torchvision.transforms as transforms
+from torchvision.models import resnet18, resnet50, wide_resnet50_2, resnet101, wide_resnet101_2, resnet34, resnet152, vgg16, vgg19
+from torchvision.models import vgg16
+from torchvision.datasets import ImageFolder
+from torch.utils.data import DataLoader, random_split, Subset, ConcatDataset, Dataset
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix, roc_curve, auc, precision_recall_curve, average_precision_score, precision_score, recall_score, f1_score
+from torchvision.datasets import CIFAR100, CIFAR10, Omniglot, Caltech101
+import numpy as np
+import pandas as pd
+from matplotlib.colors import LogNorm
+from torch.optim.lr_scheduler import StepLR
+
+import Data_Loader
+import PLOT
+import Models
+import APM
+
+import os
+import shutil
+import random
+from collections import defaultdict
+#!pip install umap-learn
+#import umap
+import cv2
+from sklearn.preprocessing import label_binarize
 def plot_bias_variance_curve(train_losses, val_losses):
     plt.figure(figsize=(10, 8), dpi=300)
     plt.plot(range(len(train_losses)), train_losses, label='Train Loss')
