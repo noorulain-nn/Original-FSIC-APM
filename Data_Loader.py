@@ -1093,7 +1093,7 @@ def prepare_cifar():
 		print(f"Filtered classes ({len(filtered_class_names)}) are fewer than NUM_CLASSES ({NUM_CLASSES}). Using all filtered classes.")
 		NUM_CLASSES = len(filtered_class_names)
 
-	random.seed(42) # Change the seed for random meta testing
+	random.seed(142) # Change the seed for random meta testing
 	# Randomly select NUM_CLASSES classes
 	selected_class_names = random.sample(filtered_class_names, NUM_CLASSES)
 
